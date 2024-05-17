@@ -12,29 +12,57 @@ import {
   Carousel,
   Card,
   Button,
+  DarkThemeToggle,
 } from "flowbite-react";
 
 export default function MyPage() {
   return (
     <>
-    <Navbar fluid rounded>
+
+  <div className="bg-slate-500">
+    <div className="container mx-auto" >
+     <Navbar fluid className="bg-slate-500">
       <NavbarBrand as={Link} href="https://flowbite-react.com">
-        <img src="/next.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+        <img src="https://www.yuntech.edu.tw/images/website_png/Group_640.png" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+        <span className="self-center whitespace-nowrap text-xl font-semibold text-white">練習-week10</span>
       </NavbarBrand>
       <NavbarToggle />
       <NavbarCollapse>
-        <NavbarLink href="#" active>
-          Home
+        <NavbarLink href="#"  className="text-white hover:border-yellow-500">
+          <span className="
+          px-4 
+          py-2 
+          hover:text-yellow-500
+          hover:border-yellow-500
+          hover:border-b-2"
+          >
+            交通
+          </span>
         </NavbarLink>
-        <NavbarLink as={Link} href="#">
-          About
+        <NavbarLink as={Link} href="#" className="text-white">
+          <span className="px-4 
+          py-2 
+          hover:text-yellow-500
+          hover:border-yellow-500
+          hover:border-b-2">
+            景點
+          </span>
         </NavbarLink>
-        <NavbarLink href="#">Services</NavbarLink>
-        <NavbarLink href="#">Pricing</NavbarLink>
-        <NavbarLink href="#">Contact</NavbarLink>
-      </NavbarCollapse>
-    </Navbar>
+        <NavbarLink href="#" className="text-white">
+          <span className="
+          px-4 
+          py-2 
+          hover:text-yellow-500
+          hover:border-yellow-500
+          hover:border-b-2">
+            關於我們
+          </span>
+        </NavbarLink>  
+          </NavbarCollapse>
+        <DarkThemeToggle />
+      </Navbar>
+    </div>
+  </div>
 
     <Footer container>
     <FooterCopyright href="#" by="Flowbite™" year={2022} />
@@ -45,7 +73,7 @@ export default function MyPage() {
       <FooterLink href="#">Contact</FooterLink>
     </FooterLinkGroup>
     </Footer>
-    
+  
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel slide={false}>
         <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
