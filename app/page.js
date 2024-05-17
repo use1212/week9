@@ -17,7 +17,7 @@ import {
 
 export default function MyPage() {
   return (
-    <>
+    <div className="bg-white">
 
   <div className="bg-slate-500">
     <div className="container mx-auto" >
@@ -107,5 +107,5 @@ export default function MyPage() {
           />
         </svg>
       </Button>
-    </>);
+    </div>);
 }
