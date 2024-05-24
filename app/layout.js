@@ -1,3 +1,6 @@
+/*
+* @auhor 李偉志 <1212100741jerr823@gmail.com> 
+*/
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Flowbite } from "flowbite-react";

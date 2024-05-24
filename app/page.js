@@ -1,3 +1,6 @@
+/*
+* @auhor 李偉志 <1212100741jerr823@gmail.com> 
+*/
 import Link from "next/link";
 import { 
   Navbar, 
@@ -15,7 +18,21 @@ import {
   DarkThemeToggle,
 } from "flowbite-react";
 
+
+
+
 export default function MyPage() {
+
+  const items = [
+    {
+    cover: "",
+    name: "",
+    description: ""
+    },
+
+    {},
+  ];
+
   return (
     <div className="bg-white">
 
@@ -76,18 +93,21 @@ export default function MyPage() {
   
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel slide={false}>
-        <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
-        <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+        <img src="/image/Hua_Shan.jpg" alt="由 WU PEI HSUAN - 自己的作品, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=110297869" />
+        <img src="/image/Taiwan_Lantern_Festival_in_2008.jpg" alt="" />
         <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
         <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
         <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
       </Carousel>
     </div>
 
+    <div className="bg-white">
+      <div className="container max-auto">
+        { items.map( item = >
     <Card
       className="max-w-sm"
       imgAlt="Meaningful alt text for an image that is not purely decorative"
-      imgSrc="/images/blog/image-1.jpg"
+      imgSrc="{item.cover}"
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         Noteworthy technology acquisitions 2021
@@ -95,7 +115,10 @@ export default function MyPage() {
       <p className="font-normal text-gray-700 dark:text-gray-400">
         Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
       </p>
+        
     </Card>
+    </div>
+    </div>
 
     <Button>
         Read more
@@ -107,5 +130,5 @@ export default function MyPage() {
           />
         </svg>
       </Button>
-    </div>);
+    </div>);S
 }
