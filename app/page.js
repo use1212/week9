@@ -1,6 +1,8 @@
 /**
  * @author 李偉志 <1212100741jerr823@gmail.com>
  */
+'use client'; 
+import {useState, useEffect} from 'react';
 import Link from "next/link";
 import { 
   Navbar, 
@@ -19,9 +21,32 @@ import {
 } from "flowbite-react";
 
 import CustomCard from "@/app/components/Card";
+import { URLSearchParams } from 'next/dist/compiled/@edge-runtime/primitives/url';
 
 
 export default function MyPage() {
+
+  const [item, setItems] = useState([]);
+  constUrl = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
+  const aqiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/YunlinCounty'; 
+  useEffect(()=>{
+    const getToken = async () =>{
+    const clientId = process.env.TDX_CLTENT_ID;
+    const clientSecret = process.env.TDX_CLTENT_SECRET;
+    const tokenParams = new URLSearchParams();
+    tokenParams.append('grant_type','client_credentials');
+    tokenParams.append('client_id', clientId);
+    tokenParams.append('client_secret', clientSecret);
+
+    const tokenResponse = await fetch('https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-from-urlencoded'
+      },
+      body: tokenParams.toString()
+    });
+  };
+  }, []);
 
   const items = [
     {
@@ -125,7 +150,7 @@ export default function MyPage() {
     }
   ];
 
-  return (
+  return ( 
     <div className="bg-white">
 
   <div className="bg-slate-500">
