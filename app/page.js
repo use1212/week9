@@ -2,6 +2,7 @@
  * @author 李偉志 <1212100741jerr823@gmail.com>
  */
 'use client'; 
+import Image from 'next/image';
 import {useState, useEffect} from 'react';
 import Link from "next/link";
 import { 
@@ -20,33 +21,26 @@ import {
   DarkThemeToggle,
 } from "flowbite-react";
 
-import CustomCard from "@/app/components/Card";
+import Card from "@/app/components/Card";
 import { URLSearchParams } from 'next/dist/compiled/@edge-runtime/primitives/url';
 
 
 export default function MyPage() {
 
-  const [item, setItems] = useState([]);
-  constUrl = 'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
-  const aqiUrl = 'https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/YunlinCounty'; 
-  useEffect(()=>{
-    const getToken = async () =>{
-    const clientId = process.env.TDX_CLTENT_ID;
-    const clientSecret = process.env.TDX_CLTENT_SECRET;
-    const tokenParams = new URLSearchParams();
-    tokenParams.append('grant_type','client_credentials');
-    tokenParams.append('client_id', clientId);
-    tokenParams.append('client_secret', clientSecret);
+  const [item, setItems] = useState([]); /*只能在前端執行的程式*/
+  const tokenUrl = '';
+  const aqiUrl = ''; 
 
-    const tokenResponse = await fetch('https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token',{
-      method: 'POST',
-      headers: {
-        'content-type': 'application/x-www-from-urlencoded'
-      },
-      body: tokenParams.toString()
-    });
-  };
+  useEffect(() => {
+  async function fetchData() {
+    const response = await fetch ('api/items');
+    const data = await response.json();
+    console.log(data);
+    setItems(data);
+  }
+  fetchData();
   }, []);
+
 
   const items = [
     {
@@ -198,16 +192,6 @@ export default function MyPage() {
     </div>
   </div>
 
-    <Footer container>
-    <FooterCopyright href="#" by="Flowbite™" year={2022} />
-    <FooterLinkGroup>
-      <FooterLink href="#">About</FooterLink>
-      <FooterLink href="#">Privacy Policy</FooterLink>
-      <FooterLink href="#">Licensing</FooterLink>
-      <FooterLink href="#">Contact</FooterLink>
-    </FooterLinkGroup>
-    </Footer>
-  
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel slide={false}>
         <img src="/image/Hua_Shan.jpg" alt="由 WU PEI HSUAN - 自己的作品, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=110297869" />
@@ -218,8 +202,9 @@ export default function MyPage() {
       </Carousel>
     </div>
 
-    <div className="bg-white">
+    
       <div className="container max-auto">
+        <div class= "grid grid-cols-1 md:grid-cols-4 gap-4">
         { items.map( item =>
         <Card
           className="max-w-sm"
@@ -251,5 +236,15 @@ export default function MyPage() {
           />
         </svg>
       </Button>
-    </div>);S
+    </div>);
+
+      <Footer container>
+      <FooterCopyright href="#" by="Flowbite™" year={2022} />
+      <FooterLinkGroup>
+        <FooterLink href="#">About</FooterLink>
+        <FooterLink href="#">Privacy Policy</FooterLink>
+        <FooterLink href="#">Licensing</FooterLink>
+        <FooterLink href="#">Contact</FooterLink>
+      </FooterLinkGroup>
+      </Footer>
 }
