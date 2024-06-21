@@ -72,8 +72,8 @@ export default function Home() {
       <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
         <Carousel>
           <AutoSizeImage
-            src="/banner/banner-1.jpg"
-            alt="由 WU PEI HSUAN - 自己的作品, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=110297869"
+            src="/banner/image/Taiwan_Lantern_Festival_in2008.jpg"
+            alt="由 WU PEI HSUAN - 自己的作品, CC BY-SA 4.0, https://www.starbucks.com.tw/stores/special/objects/images/store_beigang_03.jpg"
           />
           <AutoSizeImage
             src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
@@ -95,7 +95,7 @@ export default function Home() {
       </div>
 
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
           {items.map((item, index) => (
             <Card item={item} key={index} />
           ))}
